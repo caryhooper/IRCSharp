@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<IRCSharpServer>
+  <Host>127.0.0.1</Host>
+  <TLS>true</TLS>
+  <ListenOn>
+    <Server IPAddress="0.0.0.0" Port="6697" />
+  </ListenOn>
+</IRCSharpServer>

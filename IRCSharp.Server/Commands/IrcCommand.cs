@@ -57,20 +57,20 @@ namespace IRCSharp.Server.Commands
 
         public void SendMessage(IrcNumericResponceId responceId, IIrcUser client, string message)
         {
-            IrcNumericResponce responce = new IrcNumericResponce();
-            responce.Host = client.IrcServer.Hostname;
-            responce.To = client.Nick;
-            responce.NumericId = responceId;
-            responce.Message = message;
-            client.Write(responce);
+            IrcNumericResponce Response = new IrcNumericResponce();
+            Response.Host = client.IrcServer.Hostname;
+            Response.To = client.Nick;
+            Response.NumericId = responceId;
+            Response.Message = message;
+            client.Write(Response);
         }
         public void Say(IIrcUser client, string command, string message)
         {
-            IrcMessage responce = new IrcMessage();
-            responce.Prefix = client.Nick;
-            responce.Command = command.ToUpper();
-            responce.Params = new string[] { message };
-            client.Write(responce);
+            IrcMessage Response = new IrcMessage();
+            Response.Prefix = client.Nick;
+            Response.Command = command.ToUpper();
+            Response.Params = new string[] { message };
+            client.Write(Response);
         }
         public void NeedMoreParamsError(IIrcUser client)
         {
@@ -83,19 +83,19 @@ namespace IRCSharp.Server.Commands
         }
         public void NotFoundError(IIrcUser client, bool isChannel)
         {
-            IrcNumericResponce responce = new IrcNumericResponce();
-            responce.Message = (isChannel ? "channel" : "nick") + " not found.";
-            responce.NumericId = isChannel ? IrcNumericResponceId.ERR_NOSUCHCHANNEL : IrcNumericResponceId.ERR_NOSUCHNICK;
-            responce.To = Name.ToUpper();
-            client.Write(responce);
+            IrcNumericResponce Response = new IrcNumericResponce();
+            Response.Message = (isChannel ? "channel" : "nick") + " not found.";
+            Response.NumericId = isChannel ? IrcNumericResponceId.ERR_NOSUCHCHANNEL : IrcNumericResponceId.ERR_NOSUCHNICK;
+            Response.To = Name.ToUpper();
+            client.Write(Response);
         }
         public void PermissionsError(IIrcUser client)
         {
-            IrcMessage responce = new IrcMessage();
-            responce.Params = (client.Nick + ":Insufficiant permissions for " + Name.ToUpper()).Split(':');
-            responce.Prefix = client.IrcServer.Hostname;
-            responce.Command = "NOTICE";
-            client.Write(responce);
+            IrcMessage Response = new IrcMessage();
+            Response.Params = (client.Nick + ":Insufficiant permissions for " + Name.ToUpper()).Split(':');
+            Response.Prefix = client.IrcServer.Hostname;
+            Response.Command = "NOTICE";
+            client.Write(Response);
         }
     }
 }

@@ -15,12 +15,12 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System;
-using System.Collections.Generic;
+//using System;
+//using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+//using System.Linq;
 using System.Net.Sockets;
-using System.Text;
+//using System.Text;
 
 namespace IRCSharp
 {
@@ -57,9 +57,9 @@ namespace IRCSharp
         /// <summary>
         /// Writes an <see cref="IRCSharp.IrcNumericResponce"/> to the stream.
         /// </summary>
-        public void Write(IrcNumericResponce responce)
+        public void Write(IrcNumericResponce Response)
         {
-            _writer.WriteLine(responce);
+            _writer.WriteLine(Response);
         }
 
         /// <summary>
@@ -80,10 +80,10 @@ namespace IRCSharp
         /// <returns></returns>
         public IrcNumericResponce ReadResponce()
         {
-            IrcNumericResponce responce = new IrcNumericResponce();
+            IrcNumericResponce Response = new IrcNumericResponce();
             string line = _reader.ReadLine();
-            responce.Parse(line);
-            return responce;
+            Response.Parse(line);
+            return Response;
         }
     }
 }

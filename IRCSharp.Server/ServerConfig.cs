@@ -20,7 +20,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Text;
+//using System.Text;
 using System.Xml.Linq;
 
 namespace IRCSharp.Server
@@ -34,19 +34,34 @@ namespace IRCSharp.Server
 
         public short[] Ports { get; set; }
         public IPAddress[] Addresses { get; set; }
+        
+        public bool TLS { get; set; }
 
         public ServerConfig()
         {
             Host = "127.0.0.1";
-            Ports = new short[] { 6667 };
             Addresses = new IPAddress[] { IPAddress.Any };
         }
 
+        public short[] CheckTLS()
+        {
+            if (TLS)
+            {
+                Ports = new short[] { 6697 };
+            }
+            else
+            {
+                Ports = new short[] { 6667 };
+            }
+            return Ports;
+        }
         public void Save()
         {
+            Ports = CheckTLS();
             XDocument document = new XDocument();
             XElement config = new XElement("IRCSharpServer", 
-                new XElement("Host", Host));
+                new XElement("Host", Host),
+                new XElement("TLS", TLS.ToString()));
             XElement listenOn = new XElement("ListenOn");
             for (int i = 0; i < Ports.Length; i++ )
             {
@@ -62,6 +77,7 @@ namespace IRCSharp.Server
 
         public void Load()
         {
+            Ports = CheckTLS();
             XDocument document;
             if (!File.Exists("IRCSharp.xml"))
             {
@@ -78,6 +94,7 @@ namespace IRCSharp.Server
                 Host = config.Element("Host").Value;
                 Ports = new short[servers.Count()];
                 Addresses = new IPAddress[servers.Count()];
+                TLS = bool.Parse(config.Element("TLS").Value);
 
                 for (int i = 0; i < servers.Count(); i++)
                 {

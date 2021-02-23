@@ -17,9 +17,9 @@
 //    limitations under the License.
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
 
 namespace IRCSharp.Server
@@ -94,8 +94,8 @@ namespace IRCSharp.Server
         /// <summary>
         /// Writes an <see cref="IRCSharp.IrcNumericResponce"/> to this user's stream.
         /// </summary>
-        /// <param name="responce"></param>
-        void Write(IrcNumericResponce responce);
+        /// <param name="Response"></param>
+        void Write(IrcNumericResponce Response);
 
         /// <summary>
         /// Makes this user QUIT the server.

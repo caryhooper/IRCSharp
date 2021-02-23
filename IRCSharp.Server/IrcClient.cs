@@ -133,17 +133,17 @@ namespace IRCSharp.Server
         {
             Stream.Write(message);
         }
-        public void Write(IrcNumericResponce responce)
+        public void Write(IrcNumericResponce Response)
         {
-            if (responce.Host != IrcServer.Hostname)
+            if (Response.Host != IrcServer.Hostname)
             {
-                responce.Host = IrcServer.Hostname;
+                Response.Host = IrcServer.Hostname;
             }
-            if (string.IsNullOrEmpty(responce.To))
+            if (string.IsNullOrEmpty(Response.To))
             {
-                responce.To = Nick;
+                Response.To = Nick;
             }
-            Stream.Write(responce);
+            Stream.Write(Response);
         }
 
         public void Read()

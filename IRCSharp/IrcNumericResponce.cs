@@ -15,22 +15,22 @@
 //    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
-using System;
+//using System;
 using System.Collections.Generic;
-using System.IO;
+//using System.IO;
 using System.Linq;
-using System.Text;
+//using System.Text;
 
 namespace IRCSharp
 {
     /// <summary>
-    /// Represents a Numeric Responce.
+    /// Represents a Numeric Response.
     /// <example>:irc.example.org 001 john :Welcome to the IRC Network.  Your userhost is john!JohnDoe@host.example.com.</example>
     /// </summary>
     public class IrcNumericResponce
     {
         /// <summary>
-        /// Gets or sets the Id of this responce.
+        /// Gets or sets the Id of this Response.
         /// </summary>
         public IrcNumericResponceId NumericId { get; set; }
 
@@ -55,7 +55,7 @@ namespace IRCSharp
         public string Message { get; set; }
 
         /// <summary>
-        /// Parses a responce.
+        /// Parses a Response.
         /// </summary>
         /// <param name="line"></param>
         public void Parse(string line)

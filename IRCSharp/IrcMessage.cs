@@ -16,10 +16,10 @@
 //    See the License for the specific language governing permissions and
 //    limitations under the License.
 using System;
-using System.Collections.Generic;
+//using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
+//using System.Text;
 using System.Text.RegularExpressions;
 
 namespace IRCSharp
@@ -69,6 +69,7 @@ namespace IRCSharp
                 return;
             }
 
+            //This is a neat way to extract IRC messages.  Is there a better way?
             Regex parsingRegex = new Regex(@"^(:(?<prefix>\S+) )?(?<command>\S+)( (?!:)(?<params>.+?))?( :(?<trail>.+))?$", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
             Match messageMatch = parsingRegex.Match(line);
 
@@ -86,6 +87,7 @@ namespace IRCSharp
             }
         }
 
+        //I have no idea what this method does.  Override to ToString()??  Does it just trim things?
         public override string ToString()
         {
             string[] realParams = Params.Where(str => !string.IsNullOrEmpty(str)).ToArray();

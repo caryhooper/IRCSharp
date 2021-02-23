@@ -17,9 +17,9 @@
 //    limitations under the License.
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+//using System.Linq;
+//using System.Text;
+//using System.Threading.Tasks;
 
 
 namespace IRCSharp.Server
@@ -80,7 +80,7 @@ namespace IRCSharp.Server
             
         }
 
-        public void Write(IrcNumericResponce responce)
+        public void Write(IrcNumericResponce Response)
         {
             
         }
